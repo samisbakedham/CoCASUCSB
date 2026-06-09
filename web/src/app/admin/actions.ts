@@ -1,0 +1,112 @@
+"use server";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { createServerSupabase, isSupabaseConfigured } from "@/lib/supabase/server";
+
+export async function signOut() {
+  if (isSupabaseConfigured()) {
+    const sb = await createServerSupabase();
+    await sb.auth.signOut();
+  }
+  redirect("/login");
+}
+
+export async function advanceApplication(formData: FormData) {
+  const id = String(formData.get("id"));
+  const to = String(formData.get("to"));
+  const from = String(formData.get("from") || "") || null;
+  const sb = await createServerSupabase();
+  const {
+    data: { user },
+  } = await sb.auth.getUser();
+
+  const { error } = await sb.from("application").update({ status: to }).eq("id", id);
+  if (error) throw new Error(error.message);
+
+  await sb.from("application_event").insert({
+    application_id: id,
+    from_status: from,
+    to_status: to,
+    actor_user_id: user?.id ?? null,
+  });
+  revalidatePath("/admin/applications");
+  revalidatePath("/admin");
+}
+
+export async function setPositionStatus(formData: FormData) {
+  const id = String(formData.get("id"));
+  const status = String(formData.get("status"));
+  const sb = await createServerSupabase();
+  const { error } = await sb
+    .from("position")
+    .update({ status, updated_at: new Date().toISOString() })
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/positions");
+  revalidatePath("/positions");
+}
+
+export async function createMeeting(formData: FormData) {
+  const meeting_date = String(formData.get("meeting_date") || "");
+  if (!meeting_date) return;
+  const sb = await createServerSupabase();
+  const { error } = await sb.from("meeting").insert({
+    meeting_date,
+    location: String(formData.get("location") || "") || null,
+    term: String(formData.get("term") || "") || null,
+    called_by: String(formData.get("called_by") || "") || null,
+    qotw: String(formData.get("qotw") || "") || null,
+    summary: String(formData.get("summary") || "") || null,
+    is_published: false,
+  });
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/minutes");
+}
+
+export async function setMeetingPublished(formData: FormData) {
+  const id = String(formData.get("id"));
+  const is_published = String(formData.get("is_published")) === "true";
+  const sb = await createServerSupabase();
+  const { error } = await sb.from("meeting").update({ is_published }).eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/minutes");
+  revalidatePath("/minutes");
+}
+
+export async function createOutreach(formData: FormData) {
+  const sb = await createServerSupabase();
+  const { error } = await sb.from("outreach_log").insert({
+    bcu_id: String(formData.get("bcu_id") || "") || null,
+    officer_name: String(formData.get("officer_name") || "") || null,
+    term: String(formData.get("term") || "") || null,
+    week: String(formData.get("week") || "") || null,
+    channel: String(formData.get("channel") || "") || null,
+    contacted: String(formData.get("contacted")) === "on",
+    result: String(formData.get("result") || "") || null,
+  });
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/outreach");
+}
+
+export async function createPosition(formData: FormData) {
+  const bcu_id = String(formData.get("bcu_id"));
+  const title = String(formData.get("title") || "").trim();
+  const routing = String(formData.get("routing") || "coc_interview");
+  const description = String(formData.get("description") || "") || null;
+  const external_url = String(formData.get("external_url") || "") || null;
+  const status = String(formData.get("status") || "draft");
+  if (!bcu_id || !title) return;
+
+  const sb = await createServerSupabase();
+  const { error } = await sb.from("position").insert({
+    bcu_id,
+    title,
+    routing,
+    description,
+    external_url,
+    status,
+  });
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/positions");
+  revalidatePath("/positions");
+}

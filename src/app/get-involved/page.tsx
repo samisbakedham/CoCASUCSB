@@ -103,7 +103,7 @@ export default async function GetInvolvedPage() {
                 {s.cta && (
                   <Link
                     href={s.cta.href}
-                    className="mt-3 inline-block rounded-lg bg-gold px-4 py-2 text-sm font-bold text-navy transition hover:brightness-95"
+                    className="mt-3 inline-block rounded-lg bg-gold px-4 py-2 text-sm font-bold text-[#003660] transition hover:brightness-95"
                   >
                     {s.cta.label} →
                   </Link>
@@ -133,14 +133,14 @@ export default async function GetInvolvedPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-[#f1eeea]">
+      <section className="bg-[var(--alt-surface)]">
         <div className="mx-auto max-w-3xl px-4 py-16 text-center">
           <h2 className="text-3xl font-extrabold tracking-tight text-navy">
             Ready when you are.
           </h2>
           <Link
             href="/positions"
-            className="mt-6 inline-block rounded-xl bg-gold px-6 py-3.5 text-sm font-extrabold text-navy shadow-md transition hover:brightness-95"
+            className="mt-6 inline-block rounded-xl bg-gold px-6 py-3.5 text-sm font-extrabold text-[#003660] shadow-md transition hover:brightness-95"
           >
             See all {positions.length} open positions →
           </Link>

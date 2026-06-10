@@ -34,7 +34,7 @@ export default async function Home() {
           <div className="mt-9 flex flex-wrap gap-3">
             <Link
               href="/positions"
-              className="rounded-xl bg-gold px-6 py-3.5 text-sm font-extrabold text-navy shadow-lg transition hover:brightness-95"
+              className="rounded-xl bg-gold px-6 py-3.5 text-sm font-extrabold text-[#003660] shadow-lg transition hover:brightness-95"
             >
               Find an open seat →
             </Link>
@@ -107,7 +107,7 @@ export default async function Home() {
       </section>
 
       {/* ── How to get involved (the guide) ──────────────────────────── */}
-      <section className="bg-[#f1eeea]">
+      <section className="bg-[var(--alt-surface)]">
         <div className="mx-auto max-w-6xl px-4 py-20">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
@@ -155,7 +155,7 @@ export default async function Home() {
       {/* ── What we oversee (real BCU names) ─────────────────────────── */}
       <section className="band-ocean relative overflow-hidden text-white">
         <WaveDivider
-          fill="#f1eeea"
+          fill="var(--alt-surface)"
           className="absolute inset-x-0 top-0 rotate-180"
         />
         <div className="relative mx-auto max-w-6xl px-4 pb-24 pt-28">
@@ -209,7 +209,7 @@ export default async function Home() {
       </section>
 
       {/* ── Closing CTA ──────────────────────────────────────────────── */}
-      <section className="relative bg-[#f1eeea]">
+      <section className="relative bg-[var(--alt-surface)]">
         <div className="mx-auto max-w-4xl px-4 py-20 text-center">
           <Sunburst className="mx-auto h-16 w-16" />
           <h2 className="mt-6 text-3xl font-extrabold tracking-tight text-navy sm:text-5xl">
@@ -222,7 +222,7 @@ export default async function Home() {
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link
               href="/positions"
-              className="rounded-xl bg-gold px-6 py-3.5 text-sm font-extrabold text-navy shadow-md transition hover:brightness-95"
+              className="rounded-xl bg-gold px-6 py-3.5 text-sm font-extrabold text-[#003660] shadow-md transition hover:brightness-95"
             >
               Browse open positions →
             </Link>

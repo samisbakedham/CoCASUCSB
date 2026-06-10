@@ -15,6 +15,7 @@ export function SiteFooter() {
             The appointments &amp; transparency body of Associated Students, UC
             Santa Barbara. Public by default.
           </p>
+          <div className="mt-4 h-1 w-16 rounded-full bg-gold" />
         </div>
         <FooterCol
           title="Explore"

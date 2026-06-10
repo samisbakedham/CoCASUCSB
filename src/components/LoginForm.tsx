@@ -132,7 +132,7 @@ export function LoginForm({ next = "/admin" }: { next?: string }) {
         <button
           type="submit"
           disabled={busy}
-          className="w-full rounded-xl bg-sunrise px-5 py-3 text-sm font-bold text-white transition hover:brightness-95 disabled:opacity-60"
+          className="w-full rounded-xl bg-sunrise px-5 py-3 text-sm font-bold text-navy transition hover:brightness-95 disabled:opacity-60"
         >
           {busy ? "Sending…" : "Email me a sign-in link"}
         </button>

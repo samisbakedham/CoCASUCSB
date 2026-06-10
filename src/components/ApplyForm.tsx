@@ -97,7 +97,7 @@ export function ApplyForm({ position }: { position: Position }) {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="rounded-xl bg-sunrise px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:brightness-95 disabled:opacity-60"
+        className="rounded-xl bg-sunrise px-5 py-3 text-sm font-bold text-navy shadow-sm transition hover:brightness-95 disabled:opacity-60"
       >
         {status === "submitting" ? "Submitting…" : "Submit application"}
       </button>

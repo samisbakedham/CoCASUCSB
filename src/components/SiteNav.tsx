@@ -39,7 +39,7 @@ export function SiteNav() {
           })}
           <Link
             href="/positions"
-            className="ml-2 rounded-lg bg-sunrise px-3.5 py-2 text-sm font-bold text-white shadow-sm transition hover:brightness-95"
+            className="ml-2 rounded-lg bg-sunrise px-3.5 py-2 text-sm font-bold text-navy shadow-sm transition hover:brightness-95"
           >
             Apply
           </Link>

@@ -11,13 +11,13 @@ export const metadata: Metadata = {
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
-  "Career staff salaries": "#003660",
-  "Special & grant projects": "#0a6f93",
-  "Operating expenses": "#ef7d2a",
-  "Contracts & contractors": "#f9b418",
-  "Student staff wages": "#6fb0d6",
-  Grants: "#1f7a5a",
-  "Honoraria & stipends": "#c8482f",
+  "Career staff salaries": "#003660", // navy
+  "Special & grant projects": "#047c91", // aqua
+  "Operating expenses": "#ef5645", // coral
+  "Contracts & contractors": "#febc11", // gold
+  "Student staff wages": "#9cbebe", // mist
+  Grants: "#09847a", // sea green
+  "Honoraria & stipends": "#c43424", // dark coral
 };
 
 export default async function BudgetPage() {

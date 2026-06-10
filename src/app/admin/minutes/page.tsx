@@ -37,7 +37,7 @@ export default async function AdminMinutes() {
           <input name="called_by" placeholder="Called to order by" className="rounded-xl border border-border bg-background px-3 py-2.5 text-sm" />
           <input name="qotw" placeholder="Question of the week" className="rounded-xl border border-border bg-background px-3 py-2.5 text-sm sm:col-span-2" />
           <textarea name="summary" placeholder="Summary" rows={2} className="rounded-xl border border-border bg-background px-3 py-2.5 text-sm sm:col-span-2" />
-          <button className="justify-self-start rounded-xl bg-sunrise px-4 py-2 text-sm font-bold text-white">
+          <button className="justify-self-start rounded-xl bg-sunrise px-4 py-2 text-sm font-bold text-navy">
             Create draft
           </button>
         </form>

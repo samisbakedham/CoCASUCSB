@@ -86,7 +86,7 @@ export default async function PositionDetail({
               href={p.external_url!}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 rounded-xl bg-sunrise px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:brightness-95"
+              className="mt-4 inline-flex items-center gap-2 rounded-xl bg-sunrise px-5 py-3 text-sm font-bold text-navy shadow-sm transition hover:brightness-95"
             >
               Apply on {p.bcu_short || p.bcu_name}&apos;s site ↗
             </a>

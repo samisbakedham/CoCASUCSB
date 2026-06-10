@@ -12,7 +12,7 @@ export function SunWave({ className = "h-9 w-9" }: { className?: string }) {
           return <line key={i} x1={x} y1={y} x2={x2} y2={y2} />;
         })}
       </g>
-      <circle cx="32" cy="30" r="13" fill="var(--sunrise)" />
+      <circle cx="32" cy="30" r="13" fill="var(--coral-bright)" />
       <path
         d="M2 40 q10 -8 18 0 t18 0 t18 0 v10 q-10 8 -18 0 t-18 0 t-18 0 Z"
         fill="var(--ocean)"

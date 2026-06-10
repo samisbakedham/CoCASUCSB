@@ -39,7 +39,7 @@ export default async function Home() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/positions"
-                className="rounded-xl bg-sunrise px-5 py-3 text-sm font-bold shadow-lg transition hover:brightness-95"
+                className="rounded-xl bg-gold px-5 py-3 text-sm font-bold text-navy shadow-lg transition hover:brightness-95"
               >
                 Browse {positions.length} open positions →
               </Link>

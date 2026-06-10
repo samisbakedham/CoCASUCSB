@@ -48,7 +48,7 @@ export default async function AdminOutreach() {
             <input type="checkbox" name="contacted" className="h-4 w-4" /> Contact made
           </label>
           <textarea name="result" placeholder="Notes / result" rows={2} className="rounded-xl border border-border bg-background px-3 py-2.5 text-sm sm:col-span-2" />
-          <button className="justify-self-start rounded-xl bg-sunrise px-4 py-2 text-sm font-bold text-white">Log</button>
+          <button className="justify-self-start rounded-xl bg-sunrise px-4 py-2 text-sm font-bold text-navy">Log</button>
         </form>
       </details>
 

@@ -76,7 +76,7 @@ export default function AboutPage() {
         <p className="font-semibold text-navy">Ready to get involved?</p>
         <Link
           href="/positions"
-          className="mt-3 inline-block rounded-xl bg-sunrise px-5 py-3 text-sm font-bold text-white transition hover:brightness-95"
+          className="mt-3 inline-block rounded-xl bg-sunrise px-5 py-3 text-sm font-bold text-navy transition hover:brightness-95"
         >
           Browse open positions →
         </Link>

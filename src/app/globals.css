@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/* ─── Official UC Santa Barbara brand palette ───────────────────────────
+   Source: brand.ucsb.edu/visual-identity (Navy + Gold primary; Aqua, Sea
+   Green, Coral, Mist secondary). Web typeface: Nunito Sans (UCSB's official
+   substitute for Avenir). */
+:root {
+  --background: #eef0f2;   /* Light Light Gray */
+  --surface: #ffffff;
+  --foreground: #111517;   /* near-black */
+  --muted: #59616b;
+  --border: #dce1e5;       /* Light Gray */
+
+  --navy: #003660;         /* UCSB Navy — primary */
+  --gold: #febc11;         /* UCSB Gold — primary */
+  --ocean: #047c91;        /* Aqua — links & accents */
+  --sky: #9cbebe;          /* Mist */
+  --sunrise: #febc11;      /* Gold (CTA) */
+  --kelp: #09847a;         /* Sea Green — success / open */
+  --coral: #c43424;        /* Dark Coral — alerts */
+  --coral-bright: #ef5645;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-navy: var(--navy);
+  --color-gold: var(--gold);
+  --color-ocean: var(--ocean);
+  --color-sky: var(--sky);
+  --color-sunrise: var(--sunrise);
+  --color-kelp: var(--kelp);
+  --color-coral: var(--coral);
+  --font-sans: var(--font-nunito);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+a { color: inherit; }
+
+/* Navy band used on hero / dark sections */
+.band-ocean {
+  background:
+    radial-gradient(1200px 400px at 80% -10%, rgba(4, 124, 145, 0.35), transparent),
+    linear-gradient(180deg, #00466f 0%, #003660 100%);
+}

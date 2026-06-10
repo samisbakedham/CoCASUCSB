@@ -86,7 +86,7 @@ export default async function AdminPositions() {
             rows={2}
             className="rounded-xl border border-border bg-background px-3 py-2.5 text-sm sm:col-span-2"
           />
-          <button className="justify-self-start rounded-xl bg-sunrise px-4 py-2 text-sm font-bold text-white">
+          <button className="justify-self-start rounded-xl bg-sunrise px-4 py-2 text-sm font-bold text-navy">
             Create
           </button>
         </form>

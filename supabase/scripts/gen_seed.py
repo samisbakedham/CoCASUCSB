@@ -1,7 +1,10 @@
 import openpyxl, re, os
-REF="/Users/wonda/Documents/GitHub/CoCASUCSB/reference"
-OUT="/Users/wonda/Documents/GitHub/CoCASUCSB/supabase/seed.sql"
-def load(name): return openpyxl.load_workbook(os.path.join(REF,name),data_only=True,read_only=True)
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+REF = ROOT / "reference"
+OUT = ROOT / "supabase" / "seed.sql"
+def load(name): return openpyxl.load_workbook(REF / name,data_only=True,read_only=True)
 def g(r,i): return r[i] if (i is not None and i < len(r)) else None
 def q(s):
     if s is None: return "null"

@@ -65,16 +65,26 @@ position management. Students never need an account; they just apply.
 
 | Path | What |
 |---|---|
-| `web/` | Next.js 15 + Tailwind app (the site) |
-| `web/src/app` | Routes: `/`, `/positions`, `/positions/[id]`, `/directory`, `/budget`, `/about` |
-| `web/src/lib/data.ts` | Data layer — live Supabase if configured, else snapshot |
-| `web/src/lib/seed-data.json` | Snapshot bundled for snapshot mode |
+| `src/app` | Next.js 15 routes: `/`, `/positions`, `/positions/[id]`, `/directory`, `/budget`, `/about`, `/minutes`, `/admin` |
+| `src/lib/data.ts` | Data layer — live Supabase if configured, else snapshot |
+| `src/lib/seed-data.json` | Snapshot bundled for snapshot mode |
 | `supabase/migrations/0001_init.sql` | Full schema + RLS (the public/private boundary) |
 | `supabase/seed.sql` | Real BCUs, positions, roster & budget parsed from `/reference` |
-| `reference/` | Original AS spreadsheets, SOPs, minutes (source of truth) |
+| `reference/` | Original AS spreadsheets, SOPs, minutes, chairs meeting files (source of truth) |
+| `reference/Minutes/` | Word source archive for CoC meeting minutes by quarter |
+| `reference/Chairs Meeting/` | Chairs meeting planning, attendance, notes, and RSVP source files |
 | `PLAN.md` | The full plan & roadmap |
 
 ## Regenerating seed data
 The seed is generated from the spreadsheets in `/reference`. If those change,
 re-run the generators (a Python venv with `openpyxl` is required) to refresh
-`supabase/seed.sql` and `web/src/lib/seed-data.json`.
+`supabase/seed.sql` and `src/lib/seed-data.json`.
+
+```bash
+python supabase/scripts/gen_seed.py
+python supabase/scripts/gen_json.py
+```
+
+Minutes and Chairs Meeting documents are indexed in
+`src/lib/reference-archive.ts` so the site can show what source records exist
+while the full text is imported into database-backed public minute pages.

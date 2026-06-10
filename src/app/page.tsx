@@ -1,14 +1,13 @@
 import Link from "next/link";
-import { getBcus, getBudget, getOpenPositions, getRoster } from "@/lib/data";
+import { getBcus, getBudget, getOpenPositions } from "@/lib/data";
 import { currency } from "@/lib/brand";
 import { SunWave } from "@/components/Brand";
 import { WaveDivider, Sunburst, GoldRule } from "@/components/decor";
 
 export default async function Home() {
-  const [positions, bcus, roster, budget] = await Promise.all([
+  const [positions, bcus, budget] = await Promise.all([
     getOpenPositions(),
     getBcus(),
-    getRoster(),
     getBudget(),
   ]);
   const asBudget = budget.find((b) => b.category === "as_total")?.amount ?? 0;

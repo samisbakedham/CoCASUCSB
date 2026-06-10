@@ -39,43 +39,57 @@ export default async function AdminLayout({
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4">
-        <div className="flex items-center gap-2">
-          <SunWave className="h-7 w-7" />
-          <span className="font-extrabold text-navy">Board console</span>
-          <span className="rounded-full bg-ocean/10 px-2 py-0.5 text-xs font-semibold uppercase text-ocean">
-            {member.role}
-          </span>
-        </div>
-        <nav className="flex items-center gap-1 text-sm font-semibold">
-          <Link href="/admin" className="rounded-lg px-3 py-1.5 text-navy/80 hover:bg-navy/5">
-            Dashboard
-          </Link>
-          <Link href="/admin/applications" className="rounded-lg px-3 py-1.5 text-navy/80 hover:bg-navy/5">
-            Applications
-          </Link>
-          <Link href="/admin/positions" className="rounded-lg px-3 py-1.5 text-navy/80 hover:bg-navy/5">
-            Positions
-          </Link>
-          <Link href="/admin/minutes" className="rounded-lg px-3 py-1.5 text-navy/80 hover:bg-navy/5">
-            Minutes
-          </Link>
-          <Link href="/admin/outreach" className="rounded-lg px-3 py-1.5 text-navy/80 hover:bg-navy/5">
-            Outreach
-          </Link>
-          <Link href="/admin/reports" className="rounded-lg px-3 py-1.5 text-navy/80 hover:bg-navy/5">
-            Reports
-          </Link>
+    <div className="mx-auto max-w-7xl px-4 py-6">
+      <div className="border-b border-border pb-4">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <SunWave className="h-7 w-7" />
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="font-extrabold text-navy">Board console</span>
+                <span className="rounded-full bg-ocean/10 px-2 py-0.5 text-xs font-semibold uppercase text-ocean">
+                  {member.role}
+                </span>
+              </div>
+              <p className="text-xs font-medium text-muted">
+                Recruitment, appointments, minutes, and outreach
+              </p>
+            </div>
+          </div>
           <form action={signOut}>
-            <button className="rounded-lg px-3 py-1.5 text-muted hover:text-coral">
+            <button className="rounded-md px-3 py-2 text-sm font-semibold text-muted hover:bg-coral/10 hover:text-coral">
               Sign out
             </button>
           </form>
+        </div>
+        <nav className="mt-4 flex gap-1 overflow-x-auto text-sm font-semibold">
+          <AdminLink href="/admin">Dashboard</AdminLink>
+          <AdminLink href="/admin/applications">Applications</AdminLink>
+          <AdminLink href="/admin/positions">Positions</AdminLink>
+          <AdminLink href="/admin/minutes">Minutes</AdminLink>
+          <AdminLink href="/admin/outreach">Outreach</AdminLink>
+          <AdminLink href="/admin/reports">Reports</AdminLink>
+          <Link
+            href="/positions"
+            className="ml-auto hidden rounded-md px-3 py-2 text-ocean hover:bg-ocean/10 lg:block"
+          >
+            Public listings
+          </Link>
         </nav>
       </div>
       <div className="pt-6">{children}</div>
     </div>
+  );
+}
+
+function AdminLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      className="whitespace-nowrap rounded-md px-3 py-2 text-navy/80 hover:bg-navy/5"
+    >
+      {children}
+    </Link>
   );
 }
 

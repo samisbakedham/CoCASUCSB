@@ -93,8 +93,12 @@ export async function createPosition(formData: FormData) {
   const title = String(formData.get("title") || "").trim();
   const routing = String(formData.get("routing") || "coc_interview");
   const description = String(formData.get("description") || "") || null;
+  const legal_code = String(formData.get("legal_code") || "") || null;
   const external_url = String(formData.get("external_url") || "") || null;
   const status = String(formData.get("status") || "draft");
+  const deadline = String(formData.get("deadline") || "") || null;
+  const notes = String(formData.get("notes") || "") || null;
+  const openingsRaw = Number(formData.get("openings") || 1);
   if (!bcu_id || !title) return;
 
   const sb = await createServerSupabase();
@@ -103,8 +107,13 @@ export async function createPosition(formData: FormData) {
     title,
     routing,
     description,
+    legal_code,
     external_url,
     status,
+    deadline,
+    notes,
+    openings: Number.isFinite(openingsRaw) ? openingsRaw : 1,
+    coc_advertises: String(formData.get("coc_advertises")) === "on",
   });
   if (error) throw new Error(error.message);
   revalidatePath("/admin/positions");

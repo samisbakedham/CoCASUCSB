@@ -6,11 +6,10 @@ import { Wordmark } from "./Brand";
 
 const LINKS = [
   { href: "/positions", label: "Open Positions" },
+  { href: "/get-involved", label: "Get Involved" },
   { href: "/directory", label: "Who Runs AS" },
   { href: "/budget", label: "Budget" },
-  { href: "/metrics", label: "Metrics" },
   { href: "/minutes", label: "Minutes" },
-  { href: "/about", label: "About" },
 ];
 
 export function SiteNav() {

@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# env / secrets (app env is also ignored by web/.gitignore)
+.env
+.env.*
+!.env.local.example
+
+# node (safety net; web/ has its own)
+node_modules/
+.next/

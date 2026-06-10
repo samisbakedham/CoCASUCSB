@@ -298,15 +298,6 @@
 "contact_email": null
 },
 {
-"slug": "coc-x",
-"name": "CoC",
-"short": "C",
-"type": "committee",
-"website": null,
-"contact_name": null,
-"contact_email": null
-},
-{
 "slug": "disability-equity",
 "name": "Disability Equity",
 "short": "DE",
@@ -444,22 +435,11 @@
 ],
 "roster": [
 {
-"full_name": "Lily Strange",
+"full_name": "Thomas Eddington",
 "as_email": "as-internalchair.coc@ucsb.edu",
 "role_title": "Internal Chair",
 "is_chair": true,
-"term": "2025-26",
-"bcu_slug": "coc",
-"bcu_name": "Committee on Committees",
-"bcu_short": "CoC",
-"bcu_type": "committee"
-},
-{
-"full_name": "Shuyi Sum",
-"as_email": "as-externalchair.coc@ucsb.edu",
-"role_title": "External Chair",
-"is_chair": true,
-"term": "2025-26",
+"term": "2026-27",
 "bcu_slug": "coc",
 "bcu_name": "Committee on Committees",
 "bcu_short": "CoC",
@@ -467,21 +447,32 @@
 },
 {
 "full_name": "Oliver Ramirez Carrera",
-"as_email": "as-vicechair.coc@ucsb.edu",
-"role_title": "Vice Chair",
-"is_chair": false,
-"term": "2025-26",
+"as_email": "as-externalchair.coc@ucsb.edu",
+"role_title": "External Chair",
+"is_chair": true,
+"term": "2026-27",
 "bcu_slug": "coc",
 "bcu_name": "Committee on Committees",
 "bcu_short": "CoC",
 "bcu_type": "committee"
 },
 {
-"full_name": "Layla Hakim",
-"as_email": "as-outreachrecruitment.coc@ucsb.edu",
-"role_title": "Outreach and Recruitment Careers Coordinator",
+"full_name": "Samuel Safahi",
+"as_email": "as-vicechair.coc@ucsb.edu",
+"role_title": "Vice Chair",
 "is_chair": false,
-"term": "2025-26",
+"term": "2026-27",
+"bcu_slug": "coc",
+"bcu_name": "Committee on Committees",
+"bcu_short": "CoC",
+"bcu_type": "committee"
+},
+{
+"full_name": "Kristin Ommen",
+"as_email": "internalliaison.coc@as.ucsb.edu",
+"role_title": "Internal Liaison",
+"is_chair": false,
+"term": "2026-27",
 "bcu_slug": "coc",
 "bcu_name": "Committee on Committees",
 "bcu_short": "CoC",
@@ -492,40 +483,7 @@
 "as_email": "as-outreachrecruitment.coc@ucsb.edu",
 "role_title": "Outreach and Recruitment Media Coordinator",
 "is_chair": false,
-"term": "2025-26",
-"bcu_slug": "coc",
-"bcu_name": "Committee on Committees",
-"bcu_short": "CoC",
-"bcu_type": "committee"
-},
-{
-"full_name": "Savanah Lizet Aldaba",
-"as_email": "as-outreachrecruitment.coc@ucsb.edu",
-"role_title": "Outreach and Recruitment On-Campus Coordinator",
-"is_chair": false,
-"term": "2025-26",
-"bcu_slug": "coc",
-"bcu_name": "Committee on Committees",
-"bcu_short": "CoC",
-"bcu_type": "committee"
-},
-{
-"full_name": "Adam Orenstein",
-"as_email": "asopccc@as.ucsb.edu",
-"role_title": "Commissioner of Community and Climate",
-"is_chair": false,
-"term": "2025-26",
-"bcu_slug": "coc",
-"bcu_name": "Committee on Committees",
-"bcu_short": "CoC",
-"bcu_type": "committee"
-},
-{
-"full_name": "Archish Prakhya",
-"as_email": null,
-"role_title": "Pearman Fellow",
-"is_chair": false,
-"term": "2025-26",
+"term": "2026-27",
 "bcu_slug": "coc",
 "bcu_name": "Committee on Committees",
 "bcu_short": "CoC",
@@ -587,39 +545,6 @@
 "bcu_type": "committee"
 },
 {
-"full_name": "Sophia Fei",
-"as_email": null,
-"role_title": "External Chair",
-"is_chair": true,
-"term": "2025-26",
-"bcu_slug": "coc-x",
-"bcu_name": "CoC",
-"bcu_short": "C",
-"bcu_type": "committee"
-},
-{
-"full_name": "Lily Strange",
-"as_email": "as-internalchair.coc@ucsb.edu",
-"role_title": "Internal Chair",
-"is_chair": true,
-"term": "2025-26",
-"bcu_slug": "coc-x",
-"bcu_name": "CoC",
-"bcu_short": "C",
-"bcu_type": "committee"
-},
-{
-"full_name": "Shuyi Sum",
-"as_email": "as-externalchair.coc@ucsb.edu",
-"role_title": "Vice Chair",
-"is_chair": false,
-"term": "2025-26",
-"bcu_slug": "coc-x",
-"bcu_name": "CoC",
-"bcu_short": "C",
-"bcu_type": "committee"
-},
-{
 "full_name": "Esther Ko",
 "as_email": null,
 "role_title": "Internal Chair",
@@ -676,7 +601,7 @@
 },
 {
 "full_name": "Lily Strange",
-"as_email": "as-internalchair.coc@ucsb.edu",
+"as_email": null,
 "role_title": "Chair",
 "is_chair": true,
 "term": "2025-26",

@@ -36,7 +36,6 @@ insert into bcu(slug,name,short_name,type,website,contact_name,contact_email) va
 insert into bcu(slug,name,short_name,type,website,contact_name,contact_email) values ('judicial-council','Judicial Council','JC','committee','https://judicial.as.ucsb.edu/','Josie Penix','judicial1@as.ucsb.edu') on conflict (slug) do nothing;
 insert into bcu(slug,name,short_name,type,website,contact_name,contact_email) values ('isla-vista-community-relations-committee','Isla Vista Community Relations Committee','IVCRC','committee',null,'Rahul Unni Aravindakshan','ivcrc.internalchair@as.ucsb.edu') on conflict (slug) do nothing;
 insert into bcu(slug,name,short_name,type,website,contact_name,contact_email) values ('coc','Committee on Committees','CoC','committee','https://coc.as.ucsb.edu',null,null) on conflict (slug) do nothing;
-insert into bcu(slug,name,short_name,type,website,contact_name,contact_email) values ('coc-x','CoC','C','committee',null,null,null) on conflict (slug) do nothing;
 insert into bcu(slug,name,short_name,type,website,contact_name,contact_email) values ('disability-equity','Disability Equity','DE','committee',null,null,null) on conflict (slug) do nothing;
 insert into bcu(slug,name,short_name,type,website,contact_name,contact_email) values ('environmental-justice','Environmental Justice','EJ','committee',null,null,null) on conflict (slug) do nothing;
 insert into bcu(slug,name,short_name,type,website,contact_name,contact_email) values ('ggc','GGC','G','committee',null,null,null) on conflict (slug) do nothing;
@@ -54,25 +53,22 @@ insert into bcu(slug,name,short_name,type,website,contact_name,contact_email) va
 insert into bcu(slug,name,short_name,type,website,contact_name,contact_email) values ('pardall-governance','Pardall Governance','PG','committee',null,null,null) on conflict (slug) do nothing;
 
 -- People
-insert into person(full_name,ucsb_email,as_email) values ('Lily Strange','lilystrange@ucsb.edu','as-internalchair.coc@ucsb.edu');
-insert into person(full_name,ucsb_email,as_email) values ('Shuyi Sum','shuyisum@ucsb.edu','as-externalchair.coc@ucsb.edu');
-insert into person(full_name,ucsb_email,as_email) values ('Oliver Ramirez Carrera','oliverramirezcarrera@ucsb.edu','as-vicechair.coc@ucsb.edu');
-insert into person(full_name,ucsb_email,as_email) values ('Layla Hakim','layla_hakim@ucsb.edu','as-outreachrecruitment.coc@ucsb.edu');
+insert into person(full_name,ucsb_email,as_email) values ('Thomas Eddington','tommyjawn@ucsb.edu','as-internalchair.coc@ucsb.edu');
+insert into person(full_name,ucsb_email,as_email) values ('Oliver Ramirez Carrera','oliverramirezcarrera@ucsb.edu','as-externalchair.coc@ucsb.edu');
+insert into person(full_name,ucsb_email,as_email) values ('Samuel Safahi','safahi@ucsb.edu','as-vicechair.coc@ucsb.edu');
+insert into person(full_name,ucsb_email,as_email) values ('Kristin Ommen','kristinommen@ucsb.edu','internalliaison.coc@as.ucsb.edu');
 insert into person(full_name,ucsb_email,as_email) values ('Mira Ikladious','mikladious@ucsb.edu','as-outreachrecruitment.coc@ucsb.edu');
-insert into person(full_name,ucsb_email,as_email) values ('Savanah Lizet Aldaba','savanahaldaba@ucsb.edu','as-outreachrecruitment.coc@ucsb.edu');
-insert into person(full_name,ucsb_email,as_email) values ('Adam Orenstein','adamorenstein@ucsb.edu','asopccc@as.ucsb.edu');
-insert into person(full_name,ucsb_email,as_email) values ('Archish Prakhya','archishprakhya@ucsb.edu',null);
 insert into person(full_name,ucsb_email,as_email) values ('Baden Rosales','bhr@ucsb.edu',null);
 insert into person(full_name,ucsb_email,as_email) values ('Caleb Hanson','calebhanson@ucsb.edu','Chanson@as.ucsb.edu');
 insert into person(full_name,ucsb_email,as_email) values ('Ihita Varada','ihitavarada@ucsb.edu','ivarada@as.ucsb.edu');
 insert into person(full_name,ucsb_email,as_email) values ('Nora Pulido','npulido@ucsb.edu','npulido@as.ucsb.edu');
 insert into person(full_name,ucsb_email,as_email) values ('William Fernholz','williamfernholz@ucsb.edu','wfernholz@as.ucsb.edu');
-insert into person(full_name,ucsb_email,as_email) values ('Sophia Fei','fei118@ucsb.edu',null);
 insert into person(full_name,ucsb_email,as_email) values ('Esther Ko','estherko@ucsb.edu',null);
 insert into person(full_name,ucsb_email,as_email) values ('Vinnie Fong','vinnie@ucsb.edu',null);
 insert into person(full_name,ucsb_email,as_email) values ('Maya Clark','mayafclark@ucsb.edu',null);
 insert into person(full_name,ucsb_email,as_email) values ('Ashlyn Shelton','ashlynshelton@ucsb.edu',null);
 insert into person(full_name,ucsb_email,as_email) values ('Vidya Sundaram','vsundaram@ucsb.edu',null);
+insert into person(full_name,ucsb_email,as_email) values ('Lily Strange','lilystrange@ucsb.edu',null);
 insert into person(full_name,ucsb_email,as_email) values ('Fiona King','fionaking@ucsb.edu',null);
 insert into person(full_name,ucsb_email,as_email) values ('Anna Eisenberg','annaeisenberg@ucsb.edu','annaeisenberg@as.ucsb.edu');
 insert into person(full_name,ucsb_email,as_email) values ('Rebecca Williams','rebeccawilliams@ucsb.edu',null);
@@ -121,22 +117,16 @@ insert into person(full_name,ucsb_email,as_email) values ('Hannah Adams','hannah
 insert into person(full_name,ucsb_email,as_email) values ('Abigail Roberts','abigailroberts@ucsb.edu','aroberts@as.ucsb.edu');
 
 -- Appointments
-insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='lilystrange@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='coc' limit 1),'Internal Chair',true,'2025-26');
-insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='shuyisum@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='coc' limit 1),'External Chair',true,'2025-26');
-insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='oliverramirezcarrera@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='coc' limit 1),'Vice Chair',false,'2025-26');
-insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='layla_hakim@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='coc' limit 1),'Outreach and Recruitment Careers Coordinator',false,'2025-26');
-insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='mikladious@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='coc' limit 1),'Outreach and Recruitment Media Coordinator',false,'2025-26');
-insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='savanahaldaba@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='coc' limit 1),'Outreach and Recruitment On-Campus Coordinator',false,'2025-26');
-insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='adamorenstein@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='coc' limit 1),'Commissioner of Community and Climate',false,'2025-26');
-insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='archishprakhya@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='coc' limit 1),'Pearman Fellow',false,'2025-26');
+insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='tommyjawn@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='coc' limit 1),'Internal Chair',true,'2026-27');
+insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='oliverramirezcarrera@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='coc' limit 1),'External Chair',true,'2026-27');
+insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='safahi@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='coc' limit 1),'Vice Chair',false,'2026-27');
+insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='kristinommen@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='coc' limit 1),'Internal Liaison',false,'2026-27');
+insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='mikladious@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='coc' limit 1),'Outreach and Recruitment Media Coordinator',false,'2026-27');
 insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='bhr@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='controls-and-compliance-committee' limit 1),'Chair',true,'2025-26');
 insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='calebhanson@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='elections-board' limit 1),'Chair',true,'2025-26');
 insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='ihitavarada@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='elections-board' limit 1),'Vice Chair',false,'2025-26');
 insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='npulido@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='investment-advisory-committee' limit 1),'Co-Chair',true,'2025-26');
 insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='williamfernholz@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='investment-advisory-committee' limit 1),'Co-Chair',true,'2025-26');
-insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='fei118@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='coc-x' limit 1),'External Chair',true,'2025-26');
-insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='lilystrange@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='coc-x' limit 1),'Internal Chair',true,'2025-26');
-insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='shuyisum@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='coc-x' limit 1),'Vice Chair',false,'2025-26');
 insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='estherko@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='as-book-bank' limit 1),'Internal Chair',true,'2025-26');
 insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='vinnie@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='as-book-bank' limit 1),'External Chair',true,'2025-26');
 insert into appointment(person_id,bcu_id,role_title,is_chair,term) values ((select id from person where ucsb_email='mayafclark@ucsb.edu' order by created_at limit 1),(select id from bcu where slug='disability-equity' limit 1),'Co-Chair',true,'2025-26');

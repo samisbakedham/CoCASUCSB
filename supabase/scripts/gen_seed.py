@@ -96,7 +96,7 @@ for r in rows[1:]:
 
 # 2. CoC board
 coc_k=add_bcu("Committee on Committees",short="CoC",website="https://coc.as.ucsb.edu")
-ws=load("CoC Board Contact Sheet 2025-2026.xlsx").worksheets[0]
+ws=load("2026-2027 CoC Board/CoC Board Contact Sheet 2026-2027.xlsx")["2026-27"]
 crows=list(ws.iter_rows(values_only=True))
 for r in crows[4:]:
     posn=g(r,2)
@@ -106,7 +106,7 @@ for r in crows[4:]:
     pk=add_person(full, ucsb=(str(g(r,3)).strip() if g(r,3) else None),
                   asem=(str(g(r,4)).strip() if g(r,4) else None))
     role=str(posn).strip()
-    appts.append(dict(pk=pk,bcu=coc_k,role=role,is_chair=("chair" in role.lower() and "vice" not in role.lower()),term="2025-26"))
+    appts.append(dict(pk=pk,bcu=coc_k,role=role,is_chair=("chair" in role.lower() and "vice" not in role.lower()),term="2026-27"))
 
 # 3. AS Chairs roster
 ws=load("AS Chairs (for mailing list).xlsx").worksheets[0]
@@ -121,6 +121,7 @@ i_org=acol("org"); i_pos=acol("position"); i_name=acol("name"); i_ucsb=acol("ucs
 for r in arows[1:]:
     org=g(r,i_org); nm=g(r,i_name)
     if not org or not nm: continue
+    if str(org).strip().lower() in ("coc","committee on committees"): continue  # current board comes from the 2026-27 sheet
     bk=add_bcu(str(org).strip())
     pk=add_person(str(nm).strip(),
                   ucsb=(str(g(r,i_ucsb)).strip() if g(r,i_ucsb) else None),

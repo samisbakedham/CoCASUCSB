@@ -69,6 +69,14 @@ export function ApplyForm({ position }: { position: Position }) {
             </span>
           )}
         </p>
+        {supabaseConfigured && (
+          <a
+            href="/status"
+            className="mt-4 inline-block rounded-lg bg-navy px-4 py-2 text-sm font-bold text-white transition hover:brightness-110"
+          >
+            Track your application →
+          </a>
+        )}
       </div>
     );
   }

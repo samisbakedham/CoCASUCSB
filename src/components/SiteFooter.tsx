@@ -30,7 +30,8 @@ export function SiteFooter() {
         <FooterCol
           title="About"
           links={[
-            ["What CoC does", "/about"],
+            ["Get involved", "/get-involved"],
+            ["Track application", "/status"],
             ["Transparency charter", "/about#transparency"],
             ["Board sign-in", "/login"],
           ]}

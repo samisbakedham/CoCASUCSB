@@ -88,6 +88,61 @@ export async function createOutreach(formData: FormData) {
   revalidatePath("/admin/outreach");
 }
 
+export async function createAppointment(formData: FormData) {
+  const full_name = String(formData.get("full_name") || "").trim();
+  const ucsb_email = String(formData.get("ucsb_email") || "").trim() || null;
+  const as_email = String(formData.get("as_email") || "").trim() || null;
+  const bcu_id = String(formData.get("bcu_id") || "") || null;
+  const role_title = String(formData.get("role_title") || "").trim();
+  const term = String(formData.get("term") || "").trim() || null;
+  const is_chair = String(formData.get("is_chair")) === "on";
+  if (!full_name || !role_title) return;
+
+  const sb = await createServerSupabase();
+
+  // Find an existing person (by email, then name) or create one.
+  let personId: string | null = null;
+  if (ucsb_email) {
+    const { data } = await sb.from("person").select("id").eq("ucsb_email", ucsb_email).maybeSingle();
+    personId = data?.id ?? null;
+  }
+  if (!personId) {
+    const { data } = await sb.from("person").select("id").eq("full_name", full_name).maybeSingle();
+    personId = data?.id ?? null;
+  }
+  if (!personId) {
+    const { data, error } = await sb
+      .from("person")
+      .insert({ full_name, ucsb_email, as_email, is_public: true })
+      .select("id")
+      .single();
+    if (error) throw new Error(error.message);
+    personId = data.id;
+  }
+
+  const { error } = await sb.from("appointment").insert({
+    person_id: personId,
+    bcu_id,
+    role_title,
+    term,
+    is_chair,
+    is_current: true,
+    is_public: true,
+  });
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/roster");
+  revalidatePath("/directory");
+}
+
+export async function removeAppointment(formData: FormData) {
+  const id = String(formData.get("id"));
+  const sb = await createServerSupabase();
+  const { error } = await sb.from("appointment").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/roster");
+  revalidatePath("/directory");
+}
+
 export async function createPosition(formData: FormData) {
   const bcu_id = String(formData.get("bcu_id"));
   const title = String(formData.get("title") || "").trim();

@@ -66,6 +66,7 @@ export default async function AdminLayout({
           <AdminLink href="/admin">Dashboard</AdminLink>
           <AdminLink href="/admin/applications">Applications</AdminLink>
           <AdminLink href="/admin/positions">Positions</AdminLink>
+          <AdminLink href="/admin/roster">Roster</AdminLink>
           <AdminLink href="/admin/minutes">Minutes</AdminLink>
           <AdminLink href="/admin/outreach">Outreach</AdminLink>
           <AdminLink href="/admin/reports">Reports</AdminLink>

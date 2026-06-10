@@ -21,6 +21,14 @@
   --kelp: #09847a;         /* Sea Green — success / open */
   --coral: #c43424;        /* Dark Coral — alerts */
   --coral-bright: #ef5645;
+  /* chart slice palette (light) */
+  --chart-1: #003660;
+  --chart-2: #047c91;
+  --chart-3: #ef5645;
+  --chart-4: #febc11;
+  --chart-5: #9cbebe;
+  --chart-6: #09847a;
+  --chart-7: #c43424;
   --focus: #047c91;
   color-scheme: light;
 }
@@ -42,6 +50,14 @@
   --kelp: #42c6b8;
   --coral: #ff7a68;
   --coral-bright: #ff806f;
+  /* chart slice palette (dark — brightened for contrast) */
+  --chart-1: #5b9bd5;
+  --chart-2: #48bfd0;
+  --chart-3: #ff7a68;
+  --chart-4: #ffc845;
+  --chart-5: #9cc3c9;
+  --chart-6: #42c6b8;
+  --chart-7: #f0795f;
   --focus: #48bfd0;
   color-scheme: dark;
 }
@@ -116,6 +132,10 @@ button {
 
 [data-theme="dark"] .text-navy {
   color: #d8ecff !important;
+}
+
+[data-theme="dark"] .fill-navy {
+  fill: #d8ecff !important;
 }
 
 [data-theme="dark"] .bg-navy {

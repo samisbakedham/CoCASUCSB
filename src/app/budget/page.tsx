@@ -11,13 +11,13 @@ export const metadata: Metadata = {
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
-  "Career staff salaries": "#003660",
-  "Special & grant projects": "#047c91",
-  "Operating expenses": "#ef5645",
-  "Contracts & contractors": "#febc11",
-  "Student staff wages": "#9cbebe",
-  Grants: "#09847a",
-  "Honoraria & stipends": "#c43424",
+  "Career staff salaries": "var(--chart-1)",
+  "Special & grant projects": "var(--chart-2)",
+  "Operating expenses": "var(--chart-3)",
+  "Contracts & contractors": "var(--chart-4)",
+  "Student staff wages": "var(--chart-5)",
+  Grants: "var(--chart-6)",
+  "Honoraria & stipends": "var(--chart-7)",
 };
 
 const ROLLUP_ROWS = new Set(["Lock-In Total", "Grand Total"]);

@@ -56,6 +56,12 @@ export default async function AdminMinutes() {
               <Badge tone={m.is_published ? "kelp" : "muted"}>
                 {m.is_published ? "published" : "draft"}
               </Badge>
+              <Link
+                href={`/admin/minutes/${m.id}`}
+                className="rounded-md bg-ocean/10 px-2.5 py-1 text-xs font-bold text-ocean hover:bg-ocean/20"
+              >
+                Edit
+              </Link>
               {m.is_published && (
                 <Link href={`/minutes/${m.id}`} className="text-xs font-semibold text-ocean hover:underline">
                   view

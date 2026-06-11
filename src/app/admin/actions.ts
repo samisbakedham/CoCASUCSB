@@ -88,6 +88,48 @@ export async function createOutreach(formData: FormData) {
   revalidatePath("/admin/outreach");
 }
 
+export async function createInterviewSlot(formData: FormData) {
+  const starts_at = String(formData.get("starts_at") || "");
+  if (!starts_at) return;
+  const start = new Date(starts_at);
+  const durationMin = Number(formData.get("duration") || 30);
+  const ends = new Date(start.getTime() + (Number.isFinite(durationMin) ? durationMin : 30) * 60000);
+  const capacity = Number(formData.get("capacity") || 1);
+
+  const sb = await createServerSupabase();
+  const { error } = await sb.from("interview_slot").insert({
+    starts_at: start.toISOString(),
+    ends_at: ends.toISOString(),
+    location: String(formData.get("location") || "") || null,
+    capacity: Number.isFinite(capacity) && capacity > 0 ? capacity : 1,
+    interviewers: String(formData.get("interviewers") || "") || null,
+    notes: String(formData.get("notes") || "") || null,
+    is_open: true,
+  });
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/interviews");
+  revalidatePath("/status");
+}
+
+export async function deleteInterviewSlot(formData: FormData) {
+  const id = String(formData.get("id"));
+  const sb = await createServerSupabase();
+  const { error } = await sb.from("interview_slot").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/interviews");
+  revalidatePath("/status");
+}
+
+export async function setSlotOpen(formData: FormData) {
+  const id = String(formData.get("id"));
+  const is_open = String(formData.get("is_open")) === "true";
+  const sb = await createServerSupabase();
+  const { error } = await sb.from("interview_slot").update({ is_open }).eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath("/admin/interviews");
+  revalidatePath("/status");
+}
+
 export async function createAppointment(formData: FormData) {
   const full_name = String(formData.get("full_name") || "").trim();
   const ucsb_email = String(formData.get("ucsb_email") || "").trim() || null;

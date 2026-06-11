@@ -4,6 +4,29 @@ import { isSupabaseConfigured, createServerSupabase } from "@/lib/supabase/serve
 import { getCurrentUser } from "@/lib/auth";
 import { LoginForm } from "@/components/LoginForm";
 import { SunWave } from "@/components/Brand";
+import { bookInterview, cancelInterview } from "./actions";
+
+interface Slot {
+  id: string;
+  starts_at: string;
+  location: string | null;
+  interviewers: string | null;
+}
+interface Signup {
+  id: string;
+  slot_id: string;
+  application_id: string | null;
+  slot: { starts_at: string; location: string | null } | null;
+}
+function fmtSlot(iso: string) {
+  return new Date(iso).toLocaleString("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
 
 export const metadata: Metadata = {
   title: "Track your application",
@@ -33,6 +56,7 @@ const OUTCOME: Record<string, { label: string; tone: string }> = {
 
 interface AppRow {
   id: string;
+  full_name: string;
   status: string;
   submitted_at: string;
   position: { title: string; bcu: { name: string; short_name: string | null } | null } | null;
@@ -59,13 +83,27 @@ export default async function StatusPage() {
   }
 
   const sb = await createServerSupabase();
-  const { data } = await sb
-    .from("application")
-    .select(
-      "id,status,submitted_at,position:position_id(title,bcu:bcu_id(name,short_name))",
-    )
-    .order("submitted_at", { ascending: false });
+  const [{ data }, { data: slotData }, { data: signupData }] = await Promise.all([
+    sb
+      .from("application")
+      .select(
+        "id,full_name,status,submitted_at,position:position_id(title,bcu:bcu_id(name,short_name))",
+      )
+      .order("submitted_at", { ascending: false }),
+    sb
+      .from("interview_slot")
+      .select("id,starts_at,location,interviewers")
+      .eq("is_open", true)
+      .gte("starts_at", new Date().toISOString())
+      .order("starts_at"),
+    sb
+      .from("interview_signup")
+      .select("id,slot_id,application_id,slot:slot_id(starts_at,location)"),
+  ]);
   const apps = (data ?? []) as unknown as AppRow[];
+  const slots = (slotData ?? []) as unknown as Slot[];
+  const signups = (signupData ?? []) as unknown as Signup[];
+  const signupByApp = new Map(signups.map((s) => [s.application_id, s]));
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
@@ -130,9 +168,79 @@ export default async function StatusPage() {
                     {outcome.label}
                   </p>
                 )}
+
+                {a.status === "interview" && (
+                  <InterviewBlock
+                    appId={a.id}
+                    applicantName={a.full_name}
+                    positionTitle={a.position?.title ?? null}
+                    slots={slots}
+                    signup={signupByApp.get(a.id)}
+                  />
+                )}
               </div>
             );
           })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function InterviewBlock({
+  appId,
+  applicantName,
+  positionTitle,
+  slots,
+  signup,
+}: {
+  appId: string;
+  applicantName: string;
+  positionTitle: string | null;
+  slots: Slot[];
+  signup?: Signup;
+}) {
+  if (signup) {
+    return (
+      <div className="mt-4 rounded-xl border border-kelp/30 bg-kelp/5 p-4">
+        <p className="text-sm font-bold text-kelp">✓ Interview booked</p>
+        <p className="mt-1 text-sm text-foreground/80">
+          {signup.slot ? fmtSlot(signup.slot.starts_at) : "Time TBD"}
+          {signup.slot?.location ? ` · ${signup.slot.location}` : ""}
+        </p>
+        <form action={cancelInterview} className="mt-2">
+          <input type="hidden" name="id" value={signup.id} />
+          <button className="text-xs font-semibold text-muted hover:text-coral">
+            Cancel &amp; rebook
+          </button>
+        </form>
+      </div>
+    );
+  }
+  return (
+    <div className="mt-4 rounded-xl border border-gold/40 bg-gold/5 p-4">
+      <p className="text-sm font-bold text-navy">Pick your interview time</p>
+      {slots.length === 0 ? (
+        <p className="mt-1 text-sm text-muted">
+          No times posted yet — check back soon, the board will add slots.
+        </p>
+      ) : (
+        <div className="mt-3 flex flex-wrap gap-2">
+          {slots.map((s) => (
+            <form key={s.id} action={bookInterview}>
+              <input type="hidden" name="slot_id" value={s.id} />
+              <input type="hidden" name="application_id" value={appId} />
+              <input type="hidden" name="applicant_name" value={applicantName} />
+              <input type="hidden" name="position_title" value={positionTitle ?? ""} />
+              <button
+                className="rounded-lg border border-border bg-surface px-3 py-2 text-left text-sm font-semibold text-navy transition hover:border-ocean hover:bg-ocean/5"
+                title={s.location ?? ""}
+              >
+                {fmtSlot(s.starts_at)}
+                {s.location ? <span className="block text-[11px] font-normal text-muted">{s.location}</span> : null}
+              </button>
+            </form>
+          ))}
         </div>
       )}
     </div>
